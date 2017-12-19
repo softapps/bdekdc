@@ -37,12 +37,3 @@ cat > /etc/krb5.conf <<"EOF"
  compute.internal = COMPUTE.INTERNAL
 
 EOF
-
-#wget http://10.0.10.251/repo/kdc/cmf.keytab
-#mv cmf.keytab /etc/cloudera-scm-server/
-#chown cloudera-scm:cloudera-scm /etc/cloudera-scm-server/cmf.keytab
-#chmod 600 /etc/cloudera-scm-server/cmf.keytab
-
-#echo "cloudera-scm/admin@COMPUTE.INTERNAL" > /etc/cloudera-scm-server/cmf.principal
-#chown cloudera-scm:cloudera-scm /etc/cloudera-scm-server/cmf.principal
-#chmod 600 /etc/cloudera-scm-server/cmf.principal
