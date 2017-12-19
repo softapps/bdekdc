@@ -1,0 +1,5 @@
+#!/bin/bash
+until $(curl --output /dev/null --silent --head --fail http://cm_host:7180); do
+  printf '.'
+  sleep 5
+done

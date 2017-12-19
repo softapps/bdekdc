@@ -1,0 +1,5 @@
+// Serengeti CLI script file 
+connect --host localhost.compute.internal:8443 
+appmanager add --name application_manager_name --type ClouderaManager --url http://cm_host:7180
+cluster create --name test --password --distro Cloudera --appmanager jenkinsbdeexample29 --specFile basic_mapreduce_cluster.json --yes
+exit

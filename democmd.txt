@@ -1,0 +1,4 @@
+// Serengeti CLI script file 
+connect --host localhost.compute.internal:8443 
+cluster create --name clustername --password --specFile clusterspec/basic_node_cluster.json --template node68-template --yes
+exit

@@ -1,0 +1,63 @@
+{
+  "nodeGroups":[
+    {
+      "name": "master",
+      "roles": [
+        "hadoop_namenode",
+        "hadoop_jobtracker"
+      ],
+      "instanceNum": 1,
+      "instanceType": "SMALL",
+      "haFlag": "on"
+    },
+    {
+      "name": "d1",
+      "roles": [
+        "hadoop_datanode"
+      ],
+      "instanceNum": 3,
+      "instanceType": "SMALL",
+      "storage": {
+        "type": "LOCAL",
+        "sizeGB": 50
+      },
+      "placementPolicies": {
+        "instancePerHost": 1,
+        "groupRacks": {
+          "type":"ROUNDROBIN"
+        }
+      }
+    },
+    {
+      "name": "c1",
+      "roles": [
+        "hadoop_tasktracker"
+      ],
+      "instanceNum": 3,
+      "instanceType": "SMALL",
+      "storage": {
+        "type": "LOCAL",
+        "sizeGB": 20
+      },
+  	  "placementPolicies": {
+        "groupAssociations":[
+          {
+  		      "reference": "d1",
+  		      "type": "STRICT"
+		      }
+        ]
+	    }
+    },
+    {
+      "name": "client",
+      "roles": [
+        "hadoop_client",
+        "hive",
+        "hive_server",
+        "pig"
+      ],
+      "instanceNum": 1,
+      "instanceType": "SMALL"
+	  }
+  ]
+}
