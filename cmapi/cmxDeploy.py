@@ -1021,7 +1021,7 @@ def enable_kerberos():
                                  cluster.configure_for_kerberos(datanode_transceiver_port=1004,
                                                                 datanode_web_port=1006))
         check.status_for_command("Stop Cloudera Management Services v11", cm.get_service().stop())
-        check.status_for_command("Wait for credentials to be generated v11", cm.generate_credentials())
+        # check.status_for_command("Wait for credentials to be generated v11", cm.generate_credentials())
         check.status_for_command("Start Cloudera Management Services v11", cm.get_service().start())
     else:
         hdfs = cdh.get_service_type('HDFS')
@@ -1906,14 +1906,6 @@ def main():
     setup_impala()
 
     # Example enable Kerberos
-    cmx.kerberos = {'kdc_host': 'kdcserver.compute.internal',
-                    'security_realm': 'COMPUTE.INTERNAL',
-                    'kdc_user': 'tunde/admin@COMPUTE.INTERNAL',
-                    'kdc_password': 'cloudera'}
-    enable_kerberos()
-
-
-    # Example enable Kerberos
     # cmx.kerberos = {'kdc_host': 'mko.vpc.cloudera.com',
     #                 'security_realm': 'HADOOP.EXAMPLE.COM',
     #                 'kdc_user': 'mko/admin@HADOOP.EXAMPLE.COM',
@@ -1928,8 +1920,6 @@ def main():
     # Other examples of CM API
     # eg: "STOP" Services or "START"
     ##cdh('HBASE', 'IMPALA', 'SPARK', 'SOLR', 'FLUME').stop()
-
-    enable_kerberos()
 
 
     print "Enjoy!"
